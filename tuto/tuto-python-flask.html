@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Site blog de hightechgaming | tuto crée un serveur flask python sur un raspberry pi</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="carte">
+            <a href="/index.html" style="display: inline-block; margin-bottom: 1em; padding: 6px 16px; background: #444; color: #fff; border-radius: 4px; text-decoration: none; font-size: 1em;">&#8592; Retour à l'accueil</a>
+            <h1>tuto : crée un serveur flask python sur un raspberry pi</h1>
+            <h2>Etape 1 : installer les dépendances</h2>
+            <div class="code-block" style="position: relative; margin-bottom: 1em;">
+                <button onclick="navigator.clipboard.writeText('sudo pip3 install flask --break-system-packages')" style="position: absolute; top: 8px; right: 8px; padding: 4px 10px; font-size: 0.9em; cursor: pointer;">Copier</button>
+                <pre style="background: #222; color: #fff; padding: 1em; border-radius: 6px; overflow-x: auto;"><code>sudo pip3 install flask --break-system-packages</code></pre>
+            </div>
+            <p>ce permet de avoir le paquet python directement installer dans le système python</p>
+            <h2>Etape 2 : créer le fichier app.py</h2>
+            <p>crée le dossier</p>
+            <div class="code-block" style="position: relative; margin-bottom: 1em;">
+                <button onclick="navigator.clipboard.writeText('mkdir python-flask && cd python-flask')" style="position: absolute; top: 8px; right: 8px; padding: 4px 10px; font-size: 0.9em; cursor: pointer;">Copier</button>
+                <pre style="background: #222; color: #fff; padding: 1em; border-radius: 6px; overflow-x: auto;"><code>mkdir python-flask <br>cd python-flask</code></pre>
+            </div>
+            <p>puis le fichier app.py</p>
+            <div class="code-block" style="position: relative; margin-bottom: 1em;">
+                <button onclick="navigator.clipboard.writeText('nano app.py')" style="position: absolute; top: 8px; right: 8px; padding: 4px 10px; font-size: 0.9em; cursor: pointer;">Copier</button>
+                <pre style="background: #222; color: #fff; padding: 1em; border-radius: 6px; overflow-x: auto;"><code>nano app.py</code></pre>
+            </div>
+            <p>puis ajoutez le code suivant :</p>
+            <div class="code-block" style="position: relative; margin-bottom: 1em;">
+                <pre style="background: #222; color: #fff; padding: 1em; border-radius: 6px; overflow-x: auto;"><code>
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template("index.html")
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
+            </code></pre>
+            </div>
+            <h2>Etape 3 : créer le dossier templates</h2>
+            <p>crée le dossier templates</p>
+            <div class="code-block" style="position: relative; margin-bottom: 1em;">
+                <button onclick="navigator.clipboard.writeText('mkdir templates && cd templates')" style="position: absolute; top: 8px; right: 8px; padding: 4px 10px; font-size: 0.9em; cursor: pointer;">Copier</button>
+                <pre style="background: #222; color: #fff; padding: 1em; border-radius: 6px; overflow-x: auto;"><code>mkdir templates <br>cd templates</code></pre>
+            </div>
+            <p>puis le fichier index.html</p>
+            <div class="code-block" style="position: relative; margin-bottom: 1em;">
+                <button onclick="navigator.clipboard.writeText('nano index.html')" style="position: absolute; top: 8px; right: 8px; padding: 4px 10px; font-size: 0.9em; cursor: pointer;">Copier</button>
+                <pre style="background: #222; color: #fff; padding: 1em; border-radius: 6px; overflow-x: auto;"><code>nano index.html</code></pre>
+            </div>
+            <p>puis ajoutez le code suivant :</p>
+            <div class="code-block" style="position: relative; margin-bottom: 1em;">
+                <pre style="background: #222; color: #fff; padding: 1em; border-radius: 6px; overflow-x: auto;"><code>
+&lt;!doctype html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Titre de la page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;hello world !&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                </code></pre>
+            </div>
+            <h2>Etape 4 : lancer le serveur</h2>
+            <p>pour lancer le serveur, il faut faire :</p>
+            <div class="code-block" style="position: relative; margin-bottom: 1em;">
+                <button onclick="navigator.clipboard.writeText('python3 app.py')" style="position: absolute; top: 8px; right: 8px; padding: 4px 10px; font-size: 0.9em; cursor: pointer;">Copier</button>
+                <pre style="background: #222; color: #fff; padding: 1em; border-radius: 6px; overflow-x: auto;"><code>python3 app.py</code></pre>
+            </div>
+            <p>puis aller sur l'adresse http://votre-ip-raspberry-pi:5000/</p>
+        </div>
+    </body>
+</html>
